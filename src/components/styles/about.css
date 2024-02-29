@@ -1,0 +1,60 @@
+#about-section {
+    opacity: 0;
+    position: relative;
+    top: -3rem;
+    -webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all 0.3s ease;
+}
+
+#about-me-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    grid-column-gap: 10px; 
+    margin: 0 10rem 0 10rem;
+}
+
+#about-me-info {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: start;
+}
+
+#about-me-info h1 {
+margin: 0;
+margin-bottom: 1.5rem;
+}
+
+#about-me-info p {
+    text-align: left;
+    margin: 0;
+}
+
+#about-me-banner {
+    position: relative;
+    top: 4rem;
+    height: 15rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+#interests {
+    position: relative;
+    top: 2rem;
+    text-align: left;
+}
+
+#about-me-bottom {
+    position: relative;
+    top: 10rem;
+    padding-bottom: 10rem;
+    display: flex;
+    justify-content: center;
+}
+
+#about-me-bottom img {
+    height: 15rem;
+    width: 27rem;
+}

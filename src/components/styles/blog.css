@@ -1,0 +1,123 @@
+#blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#blog-header hr {
+width: 90%;
+}
+
+#post-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#quote-in-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#quote-in-post h1 {
+    font-size: 5rem;
+}
+
+#quote-in-post h2 {
+    font-size: 2rem;
+
+}
+
+#post-category {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0;
+    width: fit-content;
+    padding: 0 0.5rem 0 0.5rem;
+    font-weight: 800;
+  
+}
+
+#post-section h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: black;
+    
+    
+}
+
+.quote-h1 {
+    position: relative;
+    bottom: 2rem;
+}
+
+#author-date {
+    display: flex;
+    justify-content: space-between;
+}
+.author {
+    margin-right: 1rem;
+}
+.date {
+    margin-left: 1rem;
+}
+
+#post-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#post-body p {
+    position: relative;
+    text-align: left;
+    margin: 0 7rem 0 7rem;
+}
+
+.first-letter {
+    font-size: 5rem;
+    font-weight: 800;
+    color: black;
+}
+
+#blog-header h3 {
+    text-align: center;
+    position: relative;
+}
+
+#contact-btn {
+    background-color: blue;
+    width: fit-content;
+    border-radius: 50px;
+    color: white;
+}
+
+#post-text {
+    line-height: 2rem;
+    font-size: 1.1rem;
+}
+
+#post-text::first-letter {
+    initial-letter: 3;
+    color: black;
+}
+
+@media screen and (max-width: 983px) {
+    #quote-in-post {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 705px) {
+    #post-body p {
+    margin: 0 3rem 0 3rem;
+    }
+}

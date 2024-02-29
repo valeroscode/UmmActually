@@ -1,0 +1,239 @@
+#about-blog {
+    color: white;
+    background-image: url('../../assets/blog-stock.jpg');
+    background-position: 25% 20%;
+    object-fit: fill;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 2rem;
+    width: 95vw;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+#about-blog h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    
+}
+
+.post-info {
+    position: relative;
+    bottom: 4.5rem;
+}
+
+.post-quote {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 15rem;
+    margin: 0;
+}
+
+.category-preview {
+    position: relative;
+    bottom: 5rem;
+    background-color: white;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 25px;
+}
+
+
+
+#author-img-name {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    color: #151515;
+    font-weight: 700;
+    width: fit-content;
+    border-radius: 50px;
+    padding: 0 1rem 0 1rem;
+    margin-top: 3rem;
+
+}
+
+#author-img-name img {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
+    background-color: blue;
+    border-radius: 50px;
+    position: relative;
+    right: 0.5rem;
+}
+
+#filter {
+    position: relative;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding-bottom: 1.5rem;
+}
+
+#filter h2 {
+    margin-bottom: 0;
+    font-size: 2.5rem;
+}
+
+#filter p {
+    margin-top: 0;
+}
+
+#filter-btns-container {
+margin: 0;
+display: flex;
+justify-content: flex-start;
+position: relative;
+top: 1rem;
+}
+
+#filter-btns-container button {
+    color: white;
+    background-color: #151515;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50px;
+    
+}
+
+#filter-btns-container button:not(:first-child) {
+    margin-left: 2rem;
+}
+
+#search-and-filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#search-and-filters input {
+border-radius: 15px;
+outline: none;
+border: 1px solid lightgray;
+height: 2rem;
+width: 20rem;
+padding: 0 0 0 1rem;
+}
+
+#posts {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 6rem;
+}
+
+.date-views {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.post-div {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-div img {
+    height: 16rem;
+    background-color: red;
+    width: 14rem;
+    border-radius: 15px;
+}
+
+.post-title {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.post-div button {
+    background-color: blue;
+    width: 100%;
+    border-radius: 50px;
+    color: white;
+}
+
+#new-contnet {
+    background-color: whitesmoke;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 4rem;
+    height: 10rem;
+    margin-bottom: 15rem;
+}
+
+#sub {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 5rem;
+}
+
+#sub h2 {
+    margin: 0;
+}
+
+#sub p {
+    margin: 0;
+}
+
+#sub-action {
+    margin-right: 5rem;
+}
+
+#sub-action input {
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    height: 2.5rem;
+    padding-left: 1rem;
+}
+
+#sub-action button {
+    margin-left: 1rem;
+    background-color: blue;
+    color: white;
+    border-radius: 50px;
+}
+
+#home-footer {
+    position: relative;
+    
+}
+
+#home-footer h2 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#home-footer p {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 800px) {
+    #about-blog {
+        width: unset;
+        border-radius: 0;
+    }
+#filter {
+    margin: 0 2rem 0 2rem;
+}
+#posts {
+    margin: 0 2rem 0 2rem;
+}
+}
