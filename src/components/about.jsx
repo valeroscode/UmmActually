@@ -10,8 +10,10 @@ function About() {
     const aboutSection = useRef()
 
     useEffect(() => {
+        setTimeout(() => {
         aboutSection.current.style.opacity = 1;
         aboutSection.current.style.top = '3rem';
+    }, 100)
     }, [])
 
   return (
@@ -34,11 +36,18 @@ function About() {
 
     <div id='about-me-bottom'>
         <div id='quote'>
-            OUr work fnvokrvnkosvnosjvbsakhcbsjdk
+            <p className='q1'>"</p>
+            <h2>OUr work fnvokrvnkosvnosjvbsakhcbsjdk</h2>
+            <p className='q2'>"</p>
         </div>
         <img src={quoteImg} alt="" />
     </div>
     </section>
+
+    <div id='about-footer'>
+        <h2>Um...</h2>
+        <p>Thanks for visiting!</p>
+    </div>
     </>
   )
 }

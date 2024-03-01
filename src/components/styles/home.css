@@ -1,3 +1,13 @@
+#home-section {
+opacity: 0;
+position: relative;
+top: -1rem;
+-webkit-transition: all 0.4s ease;
+-moz-transition: all 0.4s ease;
+-o-transition: all 0.4s ease;
+transition: all 0.4s ease;
+}
+
 #about-blog {
     color: white;
     background-image: url('../../assets/blog-stock.jpg');
@@ -42,7 +52,9 @@
     border-radius: 25px;
 }
 
-
+#hi {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 #author-img-name {
     position: relative;
@@ -56,7 +68,11 @@
     border-radius: 50px;
     padding: 0 1rem 0 1rem;
     margin-top: 3rem;
+}
 
+#author-img-name:hover .talk-bubble {
+    display: inline-block;
+    opacity: 1;
 }
 
 #author-img-name img {
@@ -144,6 +160,7 @@ padding: 0 0 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .post-div img {
@@ -213,7 +230,7 @@ padding: 0 0 0 1rem;
 
 #home-footer {
     position: relative;
-    
+    padding-bottom: 5rem;
 }
 
 #home-footer h2 {
@@ -223,6 +240,54 @@ padding: 0 0 0 1rem;
 
 #home-footer p {
     margin-top: 0;
+}
+
+.talk-bubble {
+	margin: 40px;
+  display: none;
+  position: absolute;
+	width: 80px;
+    opacity: 0;
+	height: auto;
+	background-color: white;
+    right: 12.5rem;
+    top: -1rem;
+    border: 2px solid white;
+    -webkit-transition: all 0.1s ease;
+-moz-transition: all 0.1s ease;
+-o-transition: all 0.1s ease;
+transition: all 0.1s ease;
+}
+.round{
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+}
+
+.tri-right.border.right-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.right-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -15px;
+  top: -2px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: white transparent transparent transparent;
 }
 
 @media screen and (max-width: 800px) {

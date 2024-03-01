@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import HomeHeader from "./homeheader.jsx"
 import './styles/home.css'
+import blog from '../assets/blog-stock.jpg'
 import { Link } from "react-router-dom";
 
 function Home () {
 
   const [posts, setPosts] = useState([])
   const [livePosts, setLivePosts] = useState([])
+  const helloWorld = useRef();
+  const emailInput = useRef();
+
+  const hello = ['Hello!', 'Hallo!', 'Hola!', 'مرحبًا!', 'Bonjour!', 'Ciao!', 'こんにちは!', 'سڵاو!', 'Hallå!']
+
+  const homeSection = useRef()
   
 
   useEffect(() => {
@@ -24,7 +31,10 @@ function Home () {
         console.error(e.error)
       })
     
-      
+      setTimeout(() => {
+        homeSection.current.style.opacity = 1;
+        homeSection.current.style.top = '3rem';
+    }, 100)
   }, [])
 
   function handleFilteringPosts(e) {
@@ -43,12 +53,12 @@ function Home () {
             const text = title[i].textContent;
             const value = e.target.value.toLocaleUpperCase()
         if (text.toLocaleUpperCase().indexOf(value) > -1) {
-            title[i].closest(".post-div").style.display = 'block';
+            title[i].closest(".post-div").style.display = 'flex';
         } else {
             title[i].closest(".post-div").style.display = 'none';
         }
     } else {
-        title[i].closest(".post-div").style.display = 'block';
+        title[i].closest(".post-div").style.display = 'flex';
     }
     }
   }
@@ -74,22 +84,62 @@ function Home () {
       })
   }
 
-  function handleSubscribing(e) {
+  function handleSubscribing(e, email) {
 
-    document.cookie = `sub=true; expires=${new Date(new Date().getTime()+1000*60*60*24*365).toGMTString()}; Secure`;
-    e.target.textContent = `You're Subscribed!`
-
-    e.target.previousElementSibling.style.display = 'none'
+    fetch(`http://localhost:3000/blog/sub`, {
+      method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+          }),
+      }).then(res => {
+        if (res.ok) return res.json()
+        return res.json().then(json => Promise.reject(json))
+      }).then(({ data }) => {
+        console.log(data)
+        document.cookie = `sub=true; expires=${new Date(new Date().getTime()+1000*60*60*24*365).toGMTString()}; Secure`;
+        e.target.textContent = `You're Subscribed!`
+        e.target.previousElementSibling.style.display = 'none'
+      }).catch(e => {
+        alert("something went wrong...")
+        console.error(e.error)
+      })
     
   }
+
+  let i = 0;
+
+  function handleLanguageChanging(event) {
+    if (!event) {
+        return
+    } else {
+        helloWorld.current.textContent = hello[i];
+        if (i === hello.length - 1) {
+        i = 0
+        } else {
+        i = i + 1
+        }
+        setTimeout(() => {
+        handleLanguageChanging()
+        }, 1000)
+  }
+}
 
   return (
     <>
     <HomeHeader/>
+    <section id='home-section' ref={homeSection}>
     <div id='about-blog'>
-        <div id='author-img-name'>
-            <img src="" alt="" />
+        <div id='author-img-name' onMouseLeave={() => handleLanguageChanging(false)} onMouseOver={() => handleLanguageChanging(true)}>
+            <img src='Um.png' alt="" />
             <p>Adriana Valero</p>
+            <div class="talk-bubble tri-right round right-top">
+            <div class="talktext">
+            <p id='hi' ref={helloWorld}>Hello!</p>
+            </div>
+            </div>
         </div>
         <h2>Let's get into the nuance.</h2>
         <p>About amivnvofvmopdsnvosvosv;nfovwpvfnsrfmpknfkonforwnfowrnfpiwejrijepivgrpofprwifhweprkwogrio</p>
@@ -115,7 +165,8 @@ function Home () {
     {
         livePosts.map((post) =>
         <div className='post-div'>
-            <img src="" alt="" />
+            <div></div>
+            <img src={post.image} alt="" />
             <h5 className='category-preview'>{post.category}</h5>
             <div className='post-info'>
             <h3 className='post-title'>{post.title}</h3>
@@ -140,9 +191,9 @@ function Home () {
     </div>
 
     <div id='sub-action'>
-    <input type="text" placeholder='Email'/>
+    <input ref={emailInput} type="text" placeholder='Email'/>
  
-    <button onClick={(e) => handleSubscribing(e)}>Subscribe</button>
+    <button onClick={(e) => handleSubscribing(e, emailInput.current.value)}>Subscribe</button>
     
     </div>
     </div>
@@ -153,7 +204,7 @@ function Home () {
     </div>
 
 
-
+    </section>
     </>
   )
 }
