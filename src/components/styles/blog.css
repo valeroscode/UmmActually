@@ -4,11 +4,32 @@
     justify-content: center;
     position: relative;
     flex-direction: column;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    
+}
+
+#blog-header h3 {
+    font-size: 1.5rem;
 }
 
 #blog-header hr {
 width: 90%;
+}
+
+#blog-header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+#blog-header-nav button {
+    background-color: white;
+}
+
+#blog-header-nav button:hover {
+border: 0px solid white;
 }
 
 #post-section {
@@ -17,7 +38,12 @@ width: 90%;
     align-items: center;
     justify-content: center;
     margin-bottom: 5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#post-section img {
+    height: 30rem;
+    border-radius: 15px;
+    margin-bottom: 5rem;
 }
 
 #quote-in-post {
@@ -25,6 +51,7 @@ width: 90%;
     justify-content: center;
     align-items: center;
     width: 50%;
+    color: black;
 }
 
 #quote-in-post h1 {
@@ -50,8 +77,6 @@ width: 90%;
     margin-top: 1rem;
     margin-bottom: 1rem;
     color: black;
-    
-    
 }
 
 .quote-h1 {
@@ -74,6 +99,7 @@ width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 5rem;
 }
 
 #post-body p {
@@ -94,7 +120,7 @@ width: 90%;
 }
 
 #contact-btn {
-    background-color: blue;
+    background-color: #8969E5;
     width: fit-content;
     border-radius: 50px;
     color: white;
@@ -110,6 +136,123 @@ width: 90%;
     color: black;
 }
 
+#comments-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    top: 9rem;
+    width: 50vw;
+}
+
+#comments-section h2 {
+    margin-bottom: 0;
+}
+
+#comments-section div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#comments-section div p {
+    margin: 0;
+    text-align: left;
+}
+
+#leave-comment-section {
+   position: relative;
+   top: 3rem;
+   width: 100%;
+}
+
+#leave-comment-section div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#leave-comment-section div input {
+    width: 100%;
+    margin-top: 1rem;
+    border: 1px solid lightgray;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+#leave-comment {
+    position: relative;
+    top: 2rem;
+    background-color: #8969E5;
+    border-radius: 50px;
+    color: white;
+}
+
+#similar-posts {
+    position: relative;
+    top: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#similar-posts .sh3 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#posts {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#footer {
+    position: relative;
+    top: 30rem;
+}
+
+@media screen and (max-width: 1574px) {
+    #about-middle img {
+        height: 20rem;
+    }
+    #about-middle h3 {
+        width: 60%;
+        top: 6rem;
+        padding-right: 3rem;
+    }
+
+    #about-middle h3 .q2 {
+        right: unset;
+    }
+}
+
+@media screen and (max-width: 1325px) {
+    #about-middle img {
+        height: 15rem;
+    }
+
+    #about-middle h3 {
+       font-size: 1.7rem;
+    }
+
+    #about-middle h3 a {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 873px) {
+    #about-middle img {
+        display: none;
+    }
+
+    #about-middle h3 {
+        width: 90%;
+     }
+}
+
 @media screen and (max-width: 983px) {
     #quote-in-post {
         width: 80%;
@@ -119,5 +262,18 @@ width: 90%;
 @media screen and (max-width: 705px) {
     #post-body p {
     margin: 0 3rem 0 3rem;
+    }
+}
+
+@media screen and (max-width: 821px) {
+    #about-me-top {
+        margin: 0 2rem 0 2rem;
+        grid-template-columns: 0.7fr 2fr;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    #comments-section {
+        width: 80%;
     }
 }

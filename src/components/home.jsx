@@ -1,15 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
 import HomeHeader from "./homeheader.jsx"
 import './styles/home.css'
-import blog from '../assets/blog-stock.jpg'
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEye, faCalendar
+} from "@fortawesome/free-solid-svg-icons";
+import Subscribe from './subscribe.jsx';
 
-function Home () {
-
-  const [posts, setPosts] = useState([])
-  const [livePosts, setLivePosts] = useState([])
+function Home ({posts}) {
+  const [livePosts, setLivePosts] = useState(posts)
+  console.log(livePosts)
   const helloWorld = useRef();
-  const emailInput = useRef();
+  
 
   const hello = ['Hello!', 'Hallo!', 'Hola!', 'مرحبًا!', 'Bonjour!', 'Ciao!', 'こんにちは!', 'سڵاو!', 'Hallå!']
 
@@ -17,25 +20,12 @@ function Home () {
   
 
   useEffect(() => {
-    fetch('http://localhost:3000/blog', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      }).then(res => {
-        if (res.ok) return res.json()
-        return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
-        setPosts(data)
-        setLivePosts(data)
-      }).catch(e => {
-        console.error(e.error)
-      })
-    
       setTimeout(() => {
         homeSection.current.style.opacity = 1;
-        homeSection.current.style.top = '3rem';
+        homeSection.current.style.top = '3rem';  
     }, 100)
   }, [])
+
 
   function handleFilteringPosts(e) {
     if (e.target.textContent === 'All') {
@@ -84,31 +74,6 @@ function Home () {
       })
   }
 
-  function handleSubscribing(e, email) {
-
-    fetch(`http://localhost:3000/blog/sub`, {
-      method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email: email,
-          }),
-      }).then(res => {
-        if (res.ok) return res.json()
-        return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
-        console.log(data)
-        document.cookie = `sub=true; expires=${new Date(new Date().getTime()+1000*60*60*24*365).toGMTString()}; Secure`;
-        e.target.textContent = `You're Subscribed!`
-        e.target.previousElementSibling.style.display = 'none'
-      }).catch(e => {
-        alert("something went wrong...")
-        console.error(e.error)
-      })
-    
-  }
-
   let i = 0;
 
   function handleLanguageChanging(event) {
@@ -133,7 +98,7 @@ function Home () {
     <section id='home-section' ref={homeSection}>
     <div id='about-blog'>
         <div id='author-img-name' onMouseLeave={() => handleLanguageChanging(false)} onMouseOver={() => handleLanguageChanging(true)}>
-            <img src='Um.png' alt="" />
+            <img src='author.jpg' alt="" />
             <p>Adriana Valero</p>
             <div class="talk-bubble tri-right round right-top">
             <div class="talktext">
@@ -142,12 +107,12 @@ function Home () {
             </div>
         </div>
         <h2>Let's get into the nuance.</h2>
-        <p>About amivnvofvmopdsnvosvosv;nfovwpvfnsrfmpknfkonforwnfowrnfpiwejrijepivgrpofprwifhweprkwogrio</p>
+        <p className='about-the-blog roboto-regular'>Um…Actually is a student project created as an informal outlet for thoughts, ideas, and speculations about past and present International developments. With a focus on the political, economic, and social implications of domestic and world events, this blog aims to educate on topics not commonly presented in a practical (or honest) way.</p>
 
     </div>
     <div id='filter'>
-    <h2>Discover Nice Articles Here</h2>
-    <p>vmdkfnlnvfsklvmklbjslvknsdlnsdljkjvnsdklvbsdkjbvlsdjbvksdbljvbksd</p>
+    <h2>Discover All Articles Here</h2>
+    <p className='roboto-regular'>Enjoy exploring the articles below, and don't forget to utilize the filters and search bar for easier navigation</p>
     <div id='search-and-filters'>
         <input onKeyUp={(e) => searchPosts(e)} type="text" placeholder='Search...' />
         <div id='filter-btns-container'>
@@ -163,9 +128,25 @@ function Home () {
 
     <div id='posts'>
     {
+     livePosts.length === 0 ? posts.map((post) =>
+        <div className='post-div'>
+            <img src={post.image} alt="" />
+            <h5 className='category-preview roboto-bold'>{post.category}</h5>
+            <div className='post-info'>
+            <h3 className='post-title roboto-bold'>{post.title}</h3>
+            <p className='post-quote roboto-regular'>{post.quote}</p>
+            <hr />
+            <div className='date-views'>
+            <p className='roboto-regular'><FontAwesomeIcon icon={faCalendar} /> {post.date}</p>
+            <p className='roboto-regular'><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
+            </div>
+            <Link to={{pathname: '/blog', search: `?post=${post._id}` }} target="_blank" rel="noopener noreferrer"><button className='read-more'
+            onClick={() => updateViews(post._id, post.views, post.category)}>Read More</button></Link>
+            </div>
+        </div>
+        ) : 
         livePosts.map((post) =>
         <div className='post-div'>
-            <div></div>
             <img src={post.image} alt="" />
             <h5 className='category-preview'>{post.category}</h5>
             <div className='post-info'>
@@ -173,33 +154,21 @@ function Home () {
             <p className='post-quote'>{post.quote}</p>
             <hr />
             <div className='date-views'>
-            <p>{post.date}</p>
-            <p>{post.views} Views</p>
+            <p><FontAwesomeIcon icon={faCalendar} /> {post.date}</p>
+            <p><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
             </div>
-            <Link to={`http://localhost:5173/blog?post=${post._id}`} target="_blank" rel="noopener noreferrer"><button className='read-more'
-            onClick={() => updateViews(post._id, post.views)}>Read More</button></Link>
+            <Link to={{pathname: '/blog', search: `?post=${post._id}` }} target="_blank" rel="noopener noreferrer"><button className='read-more'
+            onClick={() => updateViews(post._id, post.views, post.category)}>Read More</button></Link>
             </div>
         </div>
         )
     }
     </div>
 
-    <div id='new-contnet'>
-    <div id='sub'>
-    <h2>Subscribe For New Content!</h2>
-    <p>You'll be notified whenever a new blog post is up!</p>
-    </div>
-
-    <div id='sub-action'>
-    <input ref={emailInput} type="text" placeholder='Email'/>
- 
-    <button onClick={(e) => handleSubscribing(e, emailInput.current.value)}>Subscribe</button>
-    
-    </div>
-    </div>
+    <Subscribe/>
 
     <div id='home-footer'>
-        <h2>Um...</h2>
+        <h2 className='playfair-display-text'>Um...</h2>
         <p>Thanks for visiting!</p>
     </div>
 

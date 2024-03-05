@@ -10,15 +10,16 @@ transition: all 0.4s ease;
 
 #about-blog {
     color: white;
-    background-image: url('../../assets/blog-stock.jpg');
-    background-position: 25% 20%;
-    object-fit: fill;
+    background-image: url('../../assets/colored.jpg');
+    background-position: 15% 20%;
+    object-fit: cover;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 2rem;
+    top: -2.5rem;
     width: 95vw;
+    height: 20rem;
     justify-content: center;
     align-items: center;
     padding-bottom: 2rem;
@@ -28,6 +29,12 @@ transition: all 0.4s ease;
     font-size: 2rem;
     margin-bottom: 0;
     
+}
+
+.about-the-blog {
+    font-size: 1.1rem;
+    width: 60%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .post-info {
@@ -87,7 +94,7 @@ transition: all 0.4s ease;
 
 #filter {
     position: relative;
-    top: 4rem;
+    top: -2rem;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -98,10 +105,13 @@ transition: all 0.4s ease;
 #filter h2 {
     margin-bottom: 0;
     font-size: 2.5rem;
+    color: black;
+    
 }
 
 #filter p {
     margin-top: 0;
+    text-align: left;
 }
 
 #filter-btns-container {
@@ -109,27 +119,30 @@ margin: 0;
 display: flex;
 justify-content: flex-start;
 position: relative;
-top: 1rem;
+top: 1.5rem;
+left: 0rem;
+flex-wrap: wrap;
 }
 
 #filter-btns-container button {
-    color: white;
-    background-color: #151515;
+    color: black;
+    background-color: #F5F0FF;
     width: fit-content;
     height: fit-content;
     border-radius: 50px;
     
 }
 
-#filter-btns-container button:not(:first-child) {
-    margin-left: 2rem;
+#filter-btns-container button {
+    margin-right: 2rem;
+    margin-bottom: 1rem;
 }
 
 #search-and-filters {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    
 }
 
 #search-and-filters input {
@@ -145,7 +158,9 @@ padding: 0 0 0 1rem;
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    top: 6rem;
+    top: 0rem;
+    width: 95vw;
+    justify-content: space-between;
 }
 
 .date-views {
@@ -161,12 +176,12 @@ padding: 0 0 0 1rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 15px;
 }
 
 .post-div img {
-    height: 16rem;
-    background-color: red;
-    width: 14rem;
+    height: 20rem;
+    width: 20rem;
     border-radius: 15px;
 }
 
@@ -176,14 +191,14 @@ padding: 0 0 0 1rem;
 }
 
 .post-div button {
-    background-color: blue;
+    background-color: #8969E5;
     width: 100%;
     border-radius: 50px;
     color: white;
 }
 
 #new-contnet {
-    background-color: whitesmoke;
+    background-color: #F5F1FF;
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
@@ -191,7 +206,7 @@ padding: 0 0 0 1rem;
     position: relative;
     top: 4rem;
     height: 10rem;
-    margin-bottom: 15rem;
+    color: black;
 }
 
 #sub {
@@ -204,14 +219,17 @@ padding: 0 0 0 1rem;
 
 #sub h2 {
     margin: 0;
+    text-align: left;
 }
 
 #sub p {
     margin: 0;
+    text-align: left;
 }
 
 #sub-action {
     margin-right: 5rem;
+    display: flex;
 }
 
 #sub-action input {
@@ -219,11 +237,12 @@ padding: 0 0 0 1rem;
     border: 1px solid lightgray;
     height: 2.5rem;
     padding-left: 1rem;
+    margin-left: 2rem;
 }
 
 #sub-action button {
     margin-left: 1rem;
-    background-color: blue;
+    background-color: #8969E5;
     color: white;
     border-radius: 50px;
 }
@@ -231,15 +250,18 @@ padding: 0 0 0 1rem;
 #home-footer {
     position: relative;
     padding-bottom: 5rem;
+    top: 15rem;
 }
 
 #home-footer h2 {
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
 }
 
 #home-footer p {
     margin-top: 0;
+    color: black;
 }
 
 .talk-bubble {
@@ -301,4 +323,23 @@ transition: all 0.1s ease;
 #posts {
     margin: 0 2rem 0 2rem;
 }
+}
+
+@media screen and (max-width: 800px) {
+    #about-blog {
+        width: unset;
+        border-radius: 0;
+    }
+#filter {
+    margin: 0 2rem 0 2rem;
+}
+#posts {
+    margin: 0 2rem 0 2rem;
+}
+}
+
+@media screen and (max-width: 639px) {
+    #posts {
+        width: unset;
+    }
 }

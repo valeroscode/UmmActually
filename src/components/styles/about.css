@@ -25,6 +25,7 @@ transition: all 0.3s ease;
 #about-me-info h1 {
 margin: 0;
 margin-bottom: 1.5rem;
+color: black;
 }
 
 #about-me-info p {
@@ -38,30 +39,7 @@ margin-bottom: 1.5rem;
     height: 20rem;
     width: 95%;
     object-fit: cover;
-}
-
-#quote {
-    font-size: 2rem;
-    font-weight: 800;
-    color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    width: 50%;
-    text-align: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#quote .q1 {
-    position: relative;
-    bottom: 3rem;
-    font-size: 5.5rem;
-}
-
-#quote .q2 {
-    font-size: 5.5rem;
-    position: relative;
-    top: 3rem;
+    border-radius: 15px;
 }
 
 #interests {
@@ -70,30 +48,59 @@ margin-bottom: 1.5rem;
     text-align: left;
 }
 
-#about-me-bottom {
-    position: relative;
-    top: 10rem;
-    padding-bottom: 10rem;
+#about-middle {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin: 0 10rem 0 10rem;
+    margin: 0 3rem 0 7rem;
 }
 
-#about-me-bottom img {
-    height: 15rem;
-    width: 27rem;
+#about-middle h3 {
+    text-align: left;
+    width: 40%;
+    font-size: 2rem;
+    position: relative;
+    color: black;
+}
+
+#about-middle h3 a {
+    font-size: 10rem;
+    position: absolute;
+    color: black;
+}
+
+#about-middle h3 .q1 {
+    bottom: 2rem;
+    left: -4rem;
+}
+
+
+#about-middle h3 .q2 {
+   top: 3rem;
+   right: -2rem;
+   transform: rotate(180deg);
+}
+
+#about-middle img {
+    height: 30rem;
+    position: relative;
+    top: 6rem;
+    border-radius: 15px;
 }
 
 #about-footer {
     position: relative;
-    
+    top: 15rem;
+    padding-bottom: 5rem;
 }
 
 #about-footer h2 {
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
 }
 
 #about-footer p {
     margin-top: 0;
+    color: black;
 }
