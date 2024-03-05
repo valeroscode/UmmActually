@@ -27,7 +27,7 @@ function Blog({posts}) {
   let id = params.get("post")
 
   useEffect(() => {
-    fetch(`http://localhost:3000/blog/post/${id}`, {
+    fetch(`https://ummacc-backend.onrender.com/blog/post/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -57,7 +57,7 @@ function Blog({posts}) {
     if (name !== '' && comment !== '') {
     let params = new URL(document.location).searchParams;
     let id = params.get("post")
-    fetch(`http://localhost:3000/blog/newcomment`, {
+    fetch(`https://ummacc-backend.onrender.com/blog/newcomment`, {
         method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ function Blog({posts}) {
   }
 
   function updateViews(id, views) {
-    fetch('http://localhost:3000/blog/incviews', {
+    fetch('https://ummacc-backend.onrender.com/blog/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
