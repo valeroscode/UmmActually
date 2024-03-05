@@ -140,7 +140,7 @@ function Home ({posts}) {
             <p className='roboto-regular'><FontAwesomeIcon icon={faCalendar} /> {post.date}</p>
             <p className='roboto-regular'><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
             </div>
-            <Link to={{pathname: '/blog', search: `?post=${post._id}` }} target="_blank" rel="noopener noreferrer"><button className='read-more'
+            <Link to={{pathname: '/blog', search: `?post=${post._id}` }}><button className='read-more'
             onClick={() => updateViews(post._id, post.views, post.category)}>Read More</button></Link>
             </div>
         </div>

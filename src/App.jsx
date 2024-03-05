@@ -29,10 +29,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home posts={posts}/>}></Route>
+          <Route path="/home" element={<Home posts={posts}/>}></Route>
           <Route path="blog" element={<Blog posts={posts}/>}></Route>
           <Route path="about" element={<About/>}></Route>
         </Routes>
-        </Router>
+      </Router>
     </>
   )
 }
