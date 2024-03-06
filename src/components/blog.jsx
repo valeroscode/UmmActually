@@ -27,6 +27,7 @@ function Blog({posts}) {
   let id = params.get("post")
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetch(`https://ummacc-backend.onrender.com/blog/post/${id}`, {
         headers: {
           'Content-Type': 'application/json'
@@ -111,22 +112,16 @@ function Blog({posts}) {
       })
   }
 
-  function goToPost(e) {
-    window.location.assign(`http://localhost:5173/blog?post=${e.target.getAttribute("postid")}`)
-  }
-
   return (
     <>
     <div id='blog-header'>
         <div id='blog-header-nav'>
         {
-            postIndex > 0 ? <button postid={posts[postIndex - 1]._id}
-            onClick={(e) => goToPost(e)}><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button> : <button style={{color:'gray'}}>Prev Post</button>
+            postIndex > 0 ? <Link to={{pathname: '/blog', search: `?post=${posts[postIndex - 1]._id}` }}><button><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
         }
         <h3 className='playfair-display-text'>Umm Actually...</h3>
         {
-            postIndex < posts.length - 1 ? <button postid={posts[postIndex + 1]._id}
-            onClick={(e) => goToPost(e)}>Next Post <FontAwesomeIcon icon={faChevronRight} /></button> : <button style={{color:'gray'}}>Next Post</button>
+            postIndex < posts.length - 1 ? <Link to={{pathname: '/blog', search: `?post=${posts[postIndex + 1]._id}` }}><button>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
         }
         
         </div>
