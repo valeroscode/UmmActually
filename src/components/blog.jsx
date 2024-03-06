@@ -117,11 +117,15 @@ function Blog({posts}) {
     <div id='blog-header'>
         <div id='blog-header-nav'>
         {
-            postIndex > 0 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex - 1]._id}` }}><button><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
+            postIndex > 0 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex - 1]._id}` }}><button onClick={() => {
+              window.location.reload()
+            }}><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
         }
         <h3 className='playfair-display-text'>Umm Actually...</h3>
         {
-            postIndex < posts.length - 1 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex + 1]._id}` }}><button>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
+            postIndex < posts.length - 1 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex + 1]._id}` }}><button onClick={() => {
+              window.location.reload()
+            }}>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
         }
         
         </div>
@@ -193,7 +197,10 @@ function Blog({posts}) {
             <p className='roboto-regular'><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
             </div>
             <Link to={{pathname: '/blog', search: `?post=${post._id}` }}><button className='read-more'
-            onClick={() => updateViews(post._id, post.views, post.category)}>Read More</button></Link>
+            onClick={() => {
+            updateViews(post._id, post.views, post.category)
+              window.location.reload()
+            }}>Read More</button></Link>
             </div>
         </div>
         )
