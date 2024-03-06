@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/post/:id", async (req, res) => {
+router.get("/article/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const findPost = await postModel.findById(id);

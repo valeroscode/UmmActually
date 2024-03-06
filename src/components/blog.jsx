@@ -28,7 +28,7 @@ function Blog({posts}) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetch(`https://ummactuallyblog.onrender.com/blog/post/${id}`, {
+    fetch(`https://ummactuallyblog.onrender.com/blog/article/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
