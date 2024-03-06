@@ -139,7 +139,7 @@ function Blog() {
               setTimeout(() => {
               window.location.reload()
             }, 100)
-            }}><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
+            }}><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{display:'none'}}>Prev Post</button>
         }
         <h3 className='playfair-display-text'>Umm Actually...</h3>
         {
@@ -147,7 +147,7 @@ function Blog() {
               setTimeout(() => {
                 window.location.reload()
               }, 100)
-            }}>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
+            }}>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{display:'none'}}>Next Post</button>
         }
         
         </div>
