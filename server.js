@@ -1,15 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv/config";
+import "dotenv/config";
 import nodemailer from "nodemailer";
 mongoose.set("strictQuery", false);
-const { postModel, subsModel } = require("./model/model");
+import { postModel, subsModel } from "./model/model.js";
 
 const PORT = process.env.PORT || 3000;
-
 const app = express();
-
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cors());
