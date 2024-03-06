@@ -7,8 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Subscribe from './subscribe';
 
-function Blog({posts}) {
+function Blog() {
 
+  const [posts, setPosts] = useState([])
   const [similarPosts, setSimilarPosts] = useState([])
   const [postIndex, setPostIndex] = useState(0)
   const commenterName = useRef()
@@ -43,12 +44,24 @@ function Blog({posts}) {
         console.error(e.error)
       })
 
+      fetch('https://ummactuallyblog.onrender.com/blog', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      }).then(res => {
+        if (res.ok) return res.json()
+        return res.json().then(json => Promise.reject(json))
+      }).then(({ data }) => {
+        setPosts(data)
+      }).catch(e => {
+        console.error(e.error)
+      })
+
    
 
   }, [])
 
   useEffect(() => {
-
   setSimilarPosts(posts.filter((p => p.title !== post.title && p.category === post.category)))
   findPostIndex()
   }, [post])
