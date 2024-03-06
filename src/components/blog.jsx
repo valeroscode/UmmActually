@@ -27,7 +27,9 @@ function Blog({posts}) {
   let id = params.get("post")
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scroll({
+      top: '0px',
+    })
     fetch(`https://ummactuallyblog.onrender.com/blog/article/${id}`, {
         headers: {
           'Content-Type': 'application/json'
@@ -41,14 +43,18 @@ function Blog({posts}) {
         console.error(e.error)
       })
 
+   
+
   }, [])
 
   useEffect(() => {
+
   setSimilarPosts(posts.filter((p => p.title !== post.title && p.category === post.category)))
   findPostIndex()
   }, [post])
 
   function findPostIndex() {
+   
     let index;
     posts.map((p, i) => p.title === post.title ? index = i : null)
     setPostIndex(index)
@@ -103,10 +109,9 @@ function Blog({posts}) {
           })
       }).then(res => {
         if (res.ok) return res.json()
-        console.log(res)
         return res.json().then(json => Promise.reject(json))
       }).then(({ data }) => {
-        console.log(data)
+    
       }).catch(e => {
         console.error(e.error)
       })
@@ -118,13 +123,17 @@ function Blog({posts}) {
         <div id='blog-header-nav'>
         {
             postIndex > 0 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex - 1]._id}` }}><button onClick={() => {
+              setTimeout(() => {
               window.location.reload()
+            }, 100)
             }}><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
         }
         <h3 className='playfair-display-text'>Umm Actually...</h3>
         {
             postIndex < posts.length - 1 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex + 1]._id}` }}><button onClick={() => {
-              window.location.reload()
+              setTimeout(() => {
+                window.location.reload()
+              }, 100)
             }}>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
         }
         
@@ -196,10 +205,12 @@ function Blog({posts}) {
             <p className='roboto-regular'><FontAwesomeIcon icon={faCalendar} /> {post.date}</p>
             <p className='roboto-regular'><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
             </div>
-            <Link to={{pathname: '/blog', search: `?post=${post._id}` }}><button className='read-more'
+            <Link to={{pathname: '/posts', search: `?post=${post._id}` }}><button className='read-more'
             onClick={() => {
             updateViews(post._id, post.views, post.category)
+            setTimeout(() => {
               window.location.reload()
+            }, 100)
             }}>Read More</button></Link>
             </div>
         </div>

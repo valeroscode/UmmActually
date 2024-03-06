@@ -20,6 +20,9 @@ function Home ({posts}) {
   
 
   useEffect(() => {
+    window.scroll({
+      top: '0px',
+    })
       setTimeout(() => {
         homeSection.current.style.opacity = 1;
         homeSection.current.style.top = '3rem';  
