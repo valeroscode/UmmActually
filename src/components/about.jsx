@@ -25,7 +25,7 @@ function About() {
                 reportStats()
             }
         })
-    }, 1000)
+    }, 200)
     })
 
     const aboutSection = useRef()
