@@ -117,11 +117,11 @@ function Blog({posts}) {
     <div id='blog-header'>
         <div id='blog-header-nav'>
         {
-            postIndex > 0 ? <Link to={{pathname: '/blog', search: `?post=${posts[postIndex - 1]._id}` }}><button><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
+            postIndex > 0 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex - 1]._id}` }}><button><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{color:'gray'}}>Prev Post</button>
         }
         <h3 className='playfair-display-text'>Umm Actually...</h3>
         {
-            postIndex < posts.length - 1 ? <Link to={{pathname: '/blog', search: `?post=${posts[postIndex + 1]._id}` }}><button>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
+            postIndex < posts.length - 1 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex + 1]._id}` }}><button>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{color:'gray'}}>Next Post</button>
         }
         
         </div>
