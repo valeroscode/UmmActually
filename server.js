@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
 import nodemailer from "nodemailer";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
 import { postModel, subsModel } from "./model/model.js";
 mongoose.set("strictQuery", false);
 const PORT = process.env.PORT || 3000;
@@ -14,12 +14,13 @@ app.use(express.static("public"));
 app.use(cors());
 const router = express.Router();
 app.use("/blog", router);
-const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
-const __dirname = path.dirname(__filename); // get the name of the directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "dist")));
 
 app.get("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.sendFile("index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 router.get("/", async (req, res) => {
