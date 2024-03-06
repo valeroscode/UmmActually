@@ -10,7 +10,7 @@ function App() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    fetch('https://ummacc-backend.onrender.com/blog', {
+    fetch('https://ummactuallyblog.onrender.com/blog', {
         headers: {
           'Content-Type': 'application/json'
         },

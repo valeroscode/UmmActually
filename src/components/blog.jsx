@@ -28,7 +28,7 @@ function Blog({posts}) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetch(`https://ummacc-backend.onrender.com/blog/post/${id}`, {
+    fetch(`https://ummactuallyblog.onrender.com/blog/post/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -58,7 +58,7 @@ function Blog({posts}) {
     if (name !== '' && comment !== '') {
     let params = new URL(document.location).searchParams;
     let id = params.get("post")
-    fetch(`https://ummacc-backend.onrender.com/blog/newcomment`, {
+    fetch(`https://ummactuallyblog.onrender.com/blog/newcomment`, {
         method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ function Blog({posts}) {
   }
 
   function updateViews(id, views) {
-    fetch('https://ummacc-backend.onrender.com/blog/incviews', {
+    fetch('https://ummactuallyblog.onrender.com/blog/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

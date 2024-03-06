@@ -54,7 +54,7 @@ function Home ({posts}) {
   }
 
   function updateViews(id, views) {
-    fetch('https://ummacc-backend.onrender.com/blog/incviews', {
+    fetch('https://ummactuallyblog.onrender.com/blog/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

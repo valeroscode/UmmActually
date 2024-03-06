@@ -3,7 +3,6 @@ import HomeHeader from "./homeheader.jsx"
 import './styles/about.css'
 import { useRef } from 'react'
 import countries from '../assets/countries.jpg'
-import quoteImg from '../assets/quote-img.png'
 
 function About() {
 
