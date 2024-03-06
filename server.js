@@ -1,16 +1,14 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv/config";
+import nodemailer from "nodemailer";
 mongoose.set("strictQuery", false);
 const { postModel, subsModel } = require("./model/model");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-require("dotenv").config();
 
 app.use(express.json());
 app.use(express.static("public"));
@@ -113,43 +111,6 @@ router.post("/newcomment", async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
-});
-
-router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await UserModel.findOne({ username });
-  if (!user) {
-    return res.json({ message: "User does not exist" });
-  }
-
-  const isPwValid = await bcrypt.compare(password, user.password);
-
-  if (!isPwValid) {
-    return res.json({ message: "Username or password is incorrect" });
-  }
-
-  const token = jwt.sign({ id: user._id }, process.env.REACT_APP_JWT);
-  res.json({ token });
-});
-
-router.post("/register", async (req, res) => {
-  const { username, password } = req.body;
-
-  const user = await UserModel.findOne({ username });
-
-  if (user) {
-    return res.json({ message: "User already exists" });
-  }
-
-  const hashedPw = await bcrypt.hash(password, 10);
-
-  const newUser = new UserModel({
-    username,
-    password: hashedPw,
-  });
-  await newUser.save();
-
-  res.json({ message: "User registered successfully" });
 });
 
 const start = async () => {
