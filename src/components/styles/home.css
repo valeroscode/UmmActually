@@ -12,6 +12,7 @@ transition: all 0.4s ease;
     color: white;
     background-image: url('../../assets/colored.jpg');
     background-position: 15% 20%;
+    background-size: cover;
     object-fit: cover;
     border-radius: 15px;
     display: flex;
