@@ -36,7 +36,7 @@ function About() {
     useEffect(() => {
         setTimeout(() => {
         aboutSection.current.style.opacity = 1;
-        aboutSection.current.style.top = '3rem';
+        aboutSection.current.style.marginTop = '3rem';
     }, 100)
 
     observer.observe(Num2.current)
@@ -104,13 +104,13 @@ function About() {
     </div>
     </div>
     </div>
-  
-    </section>
 
     <div id='about-footer'>
         <h2 className='playfair-display-text'>Um...</h2>
         <p>Thanks for visiting!</p>
     </div>
+  
+    </section>
     </>
   )
 }

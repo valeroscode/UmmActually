@@ -19,7 +19,7 @@ transition: all 0.4s ease;
     flex-direction: column;
     position: relative;
     top: -2.5rem;
-    width: 95vw;
+    margin: 0 2rem;
     height: 20rem;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@ transition: all 0.4s ease;
 
 .about-the-blog {
     font-size: 1.1rem;
-    width: 60%;
+
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -47,7 +47,7 @@ transition: all 0.4s ease;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 15rem;
+
     margin: 0;
 }
 
@@ -55,7 +55,7 @@ transition: all 0.4s ease;
     position: relative;
     bottom: 5rem;
     background-color: white;
-    width: fit-content;
+
     padding: 0.5rem;
     border-radius: 25px;
 }
@@ -72,7 +72,7 @@ transition: all 0.4s ease;
     background-color: whitesmoke;
     color: #151515;
     font-weight: 700;
-    width: fit-content;
+
     border-radius: 50px;
     padding: 0 1rem 0 1rem;
     margin-top: 3rem;
@@ -101,6 +101,8 @@ transition: all 0.4s ease;
     justify-content: start;
     align-items: start;
     padding-bottom: 1.5rem;
+
+    margin: 0 2rem;
 }
 
 #filter h2 {
@@ -128,7 +130,7 @@ flex-wrap: wrap;
 #filter-btns-container button {
     color: black;
     background-color: #F5F0FF;
-    width: fit-content;
+   
     height: fit-content;
     border-radius: 50px;
     
@@ -151,7 +153,7 @@ border-radius: 15px;
 outline: none;
 border: 1px solid lightgray;
 height: 2rem;
-width: 20rem;
+
 padding: 0 0 0 1rem;
 }
 
@@ -160,8 +162,7 @@ padding: 0 0 0 1rem;
     flex-wrap: wrap;
     position: relative;
     top: 0rem;
-    width: 95vw;
-    justify-content: space-between;
+
 }
 
 .date-views {
@@ -182,7 +183,7 @@ padding: 0 0 0 1rem;
 
 .post-div img {
     height: 20rem;
-    width: 20rem;
+  
     border-radius: 15px;
 }
 
@@ -193,7 +194,7 @@ padding: 0 0 0 1rem;
 
 .post-div button {
     background-color: #8969E5;
-    width: 100%;
+  
     border-radius: 50px;
     color: white;
 }
@@ -269,7 +270,7 @@ padding: 0 0 0 1rem;
 	margin: 40px;
   display: none;
   position: absolute;
-	width: 80px;
+
     opacity: 0;
 	height: auto;
 	background-color: white;
@@ -288,34 +289,11 @@ transition: all 0.1s ease;
 
 }
 
-.tri-right.border.right-top:before {
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: -40px;
-  top: -8px;
-	bottom: auto;
-	border: 32px solid;
-	border-color: #666 transparent transparent transparent;
-}
-.tri-right.right-top:after{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: -15px;
-  top: -2px;
-	bottom: auto;
-	border: 20px solid;
-	border-color: white transparent transparent transparent;
-}
+
 
 @media screen and (max-width: 800px) {
     #about-blog {
-        width: unset;
+      
         border-radius: 0;
     }
 #filter {
@@ -328,7 +306,7 @@ transition: all 0.1s ease;
 
 @media screen and (max-width: 800px) {
     #about-blog {
-        width: unset;
+     
         border-radius: 0;
     }
 #filter {
@@ -340,7 +318,19 @@ transition: all 0.1s ease;
 }
 
 @media screen and (max-width: 639px) {
-    #posts {
-        width: unset;
+    .about-the-blog {
+     
+    }
+
+    #home-section {
+   
+        margin: 0;
+    }
+
+    #about-blog {
+   
+        margin: 0;
+        position: relative;
+      
     }
 }
