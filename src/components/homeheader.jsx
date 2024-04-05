@@ -1,8 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import "./styles/header.css"
 import { Link } from "react-router-dom";
 
 function Homeheader() {
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header')
+      if (window.scrollY > 5) {
+        header.style.padding = '0rem 0'
+      } else {
+        header.style.padding = '2rem 0'
+      }
+    })
+  }, [])
 
   return (
     <>

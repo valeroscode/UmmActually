@@ -206,7 +206,7 @@ border: 0px solid white;
 #posts {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 #footer {

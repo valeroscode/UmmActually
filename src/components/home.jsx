@@ -7,19 +7,33 @@ import {
   faEye, faCalendar
 } from "@fortawesome/free-solid-svg-icons";
 import Subscribe from './subscribe.jsx';
+import { set } from 'mongoose';
+import e from 'cors';
 
 function Home ({posts}) {
-  const [livePosts, setLivePosts] = useState(posts)
-  console.log(livePosts)
-  const helloWorld = useRef();
-  
 
+  setTimeout(() => {
+  const children = document.getElementsByClassName('post-div');
+    for (let i = 0; i < children.length; i++) {
+        children[i].style.opacity = 1;
+        children[i].style.top = '0rem';
+    }
+  }, 500)
+
+  const [livePosts, setLivePosts] = useState(posts)
+  const helloWorld = useRef();
   const hello = ['Hello!', 'Hallo!', 'Hola!', 'مرحبًا!', 'Bonjour!', 'Ciao!', 'こんにちは!', 'سڵاو!', 'Hallå!']
 
   const homeSection = useRef()
+
+  const postsElement = useRef();
+  const fixedFilters = useRef();
   
 
   useEffect(() => {
+
+    document.getElementById('home-section').style.top = '0'
+    document.getElementById('home-section').style.opacity = '1'
     window.scroll({
       top: '0px',
     })
@@ -27,6 +41,21 @@ function Home ({posts}) {
         homeSection.current.style.opacity = 1;
         homeSection.current.style.top = '3rem';  
     }, 100)
+    handleLanguageChanging()
+
+    const ob = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+      
+      fixedFilters.current.style.right = '0rem';
+        } else {
+    
+          fixedFilters.current.style.right = '-20rem';
+        }
+      })
+    })
+
+    ob.observe(postsElement.current)
   }, [])
 
 
@@ -38,6 +67,25 @@ function Home ({posts}) {
     setLivePosts(filter)
     }
   }
+
+  useEffect(() => { 
+    const children = document.getElementsByClassName('post-div');
+    let i = 0;
+    function showPosts() {
+      if (i === children.length - 1) {
+      return
+      } else {
+     
+      setTimeout(() => {
+      showPosts()
+      children[i].style.opacity = 1;
+      children[i].style.top = '0rem';
+      i++
+    }, 200)
+      }
+    }
+    showPosts()
+  }, [livePosts])
 
   function searchPosts(e) {
     const title = document.getElementsByClassName('post-title')
@@ -79,19 +127,24 @@ function Home ({posts}) {
 
   let i = 0;
 
-  function handleLanguageChanging(event) {
-    if (!event) {
-        return
+  const talkBubble = useRef();
+
+  function handleLanguageChanging() {
+    if (i === hello.length - 1) {
+       i = 0;
+       setTimeout(() => {
+        handleLanguageChanging()
+        }, 2000)
     } else {
-        helloWorld.current.textContent = hello[i];
-        if (i === hello.length - 1) {
-        i = 0
-        } else {
-        i = i + 1
-        }
+        helloWorld.current.style.opacity = 0;
+        i = i + 1;
+        setTimeout(() => {
+          helloWorld.current.textContent = hello[i];
+        helloWorld.current.style.opacity = 1;
+        }, 200)
         setTimeout(() => {
         handleLanguageChanging()
-        }, 1000)
+        }, 2000)
   }
 }
 
@@ -99,26 +152,24 @@ function Home ({posts}) {
     <>
     <HomeHeader/>
     <section id='home-section' ref={homeSection}>
-    <div id='about-blog'>
-        <div id='author-img-name' onMouseLeave={() => handleLanguageChanging(false)} onMouseOver={() => handleLanguageChanging(true)}>
-            <img src='author.jpg' alt="" />
-            <p>Adriana Valero</p>
-            <div class="talk-bubble tri-right round right-top">
-            <div class="talktext">
+
+      <div id="hello-banner">
+      <div className="talk-bubble tri-right round right-top" ref={talkBubble}>
+            <div className="talktext">
             <p id='hi' ref={helloWorld}>Hello!</p>
             </div>
-            </div>
-        </div>
+      </div>
+      </div>
+    <div id='about-blog'>
+        {/* <div id='author-img-name'>
+            <img src='author.jpg' alt="" />
+            <p className='authName'>Adriana Valero</p>
+            
+        </div> */}
         <h2>Let's get into the nuance.</h2>
         <p className='about-the-blog roboto-regular'>Um…Actually is a student project created as an informal outlet for thoughts, ideas, and speculations about past and present International developments. With a focus on the political, economic, and social implications of domestic and world events, this blog aims to educate on topics not commonly presented in a practical (or honest) way.</p>
-
     </div>
-    <div id='filter'>
-    <h2>Discover All Articles Here</h2>
-    <p className='roboto-regular'>Enjoy exploring the articles below, and don't forget to utilize the filters and search bar for easier navigation</p>
-    <div id='search-and-filters'>
-        <input onKeyUp={(e) => searchPosts(e)} type="text" placeholder='Search...' />
-        <div id='filter-btns-container'>
+    <div id='filter-btns-container' ref={fixedFilters}>
         <button onClick={(e) => handleFilteringPosts(e)} className='filter-btn'>All</button>
     {
         posts.map((cat, index) => 
@@ -126,15 +177,23 @@ function Home ({posts}) {
         )
     }
     </div>
+    <div id='filter'>
+    <h2>Discover <i>All</i> Articles Here</h2>
+    <p className='roboto-regular'>Enjoy exploring the articles below, and don't forget to utilize the filters and search bar for easier navigation</p>
+    <div id='search-and-filters'>
+        <input onKeyUp={(e) => searchPosts(e)} type="text" placeholder='Search...' />
+        
     </div>
     </div>
 
-    <div id='posts'>
+    <div id='posts' ref={postsElement}>
     {
      livePosts.length === 0 ? posts.map((post) =>
         <div className='post-div'>
+           <div className='post-div-img-cat'>
+           <h5 className='category-preview roboto-bold'>{post.category}</h5>
             <img src={post.image} alt="" />
-            <h5 className='category-preview roboto-bold'>{post.category}</h5>
+            </div>
             <div className='post-info'>
             <h3 className='post-title roboto-bold'>{post.title}</h3>
             <p className='post-quote roboto-regular'>{post.quote}</p>
@@ -150,8 +209,10 @@ function Home ({posts}) {
         ) : 
         livePosts.map((post) =>
         <div className='post-div'>
+            <div className='post-div-img-cat'>
+           <h5 className='category-preview roboto-bold'>{post.category}</h5>
             <img src={post.image} alt="" />
-            <h5 className='category-preview'>{post.category}</h5>
+            </div>
             <div className='post-info'>
             <h3 className='post-title'>{post.title}</h3>
             <p className='post-quote'>{post.quote}</p>

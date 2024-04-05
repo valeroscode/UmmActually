@@ -29,6 +29,7 @@ function Subscribe () {
 
   return (
     <>
+    <div id='new-content-parent'>
     <div id='new-contnet'>
     <div id='sub'>
     <h2>Subscribe For New Content!</h2>
@@ -40,6 +41,7 @@ function Subscribe () {
  
     <button onClick={(e) => handleSubscribing(e, emailInput.current.value)}>Subscribe</button>
     
+    </div>
     </div>
     </div>
     </>
