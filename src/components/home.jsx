@@ -32,6 +32,8 @@ function Home ({posts}) {
 
   useEffect(() => {
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     document.getElementById('home-section').style.top = '0'
     document.getElementById('home-section').style.opacity = '1'
     window.scroll({

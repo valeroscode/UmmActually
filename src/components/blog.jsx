@@ -66,6 +66,10 @@ function Blog() {
   findPostIndex()
   }, [post])
 
+  useEffect(() => {
+    console.log(similarPosts)
+  }, [similarPosts])
+
   function findPostIndex() {
    
     let index;
@@ -200,14 +204,14 @@ function Blog() {
     </div>
     </section>
 
-
     { similarPosts.length !== 0 ?
     <section id='similar-posts'>
     <h3 className='roboto-regular sh3'>Similar Posts</h3>
     <div id='posts'>
     {
         similarPosts.map((post) =>
-        <div className='post-div'>
+       
+        <div className='blog-post-div'>
             <img src={post.image} alt="" />
             <h5 className='category-preview roboto-bold'>{post.category}</h5>
             <div className='post-info'>

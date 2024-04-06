@@ -34,13 +34,16 @@ function About() {
     const Num3 = useRef()
 
     useEffect(() => {
+
+        
         setTimeout(() => {
         aboutSection.current.style.opacity = 1;
-        aboutSection.current.style.marginTop = '3rem';
     }, 100)
 
     observer.observe(Num2.current)
     observer.observe(Num3.current)
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [])
 
   return (

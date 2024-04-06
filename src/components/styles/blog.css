@@ -41,8 +41,9 @@ border: 0px solid white;
 }
 
 #post-section img {
-    height: 30rem;
-    border-radius: 15px;
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
     margin-bottom: 5rem;
 }
 
@@ -206,12 +207,49 @@ border: 0px solid white;
 #posts {
     position: relative;
     display: flex;
-    justify-content: start;
+    justify-content: center;
+}
+
+.blog-post-div img {
+    height: 20rem;
+    border-radius: 15px;
+    width: 20rem;
+    object-fit: cover;
+}
+
+.blog-post-div .category-preview {
+    position: relative;
+    bottom: 20rem;
+    background-color: white;
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+}
+
+.blog-post-div .post-info {
+    position: relative;
+    bottom: 3rem;
+}
+
+.blog-post-div .post-info h3 {
+ margin: 0;  
+}
+
+.blog-post-div .post-info p {
+    margin-top: 0;  
+}
+
+.blog-post-div .date-views {
+    display: flex;
+    justify-content: center;
+}
+
+.blog-post-div .date-views p:first-child {
+    margin-right: 1rem;
 }
 
 #footer {
     position: relative;
-    top: 30rem;
+    margin-top: 25rem;
 }
 
 @media screen and (max-width: 1574px) {
@@ -262,13 +300,6 @@ border: 0px solid white;
 @media screen and (max-width: 705px) {
     #post-body p {
     margin: 0 3rem 0 3rem;
-    }
-}
-
-@media screen and (max-width: 821px) {
-    #about-me-top {
-        margin: 0 2rem 0 2rem;
-        grid-template-columns: 0.7fr 2fr;
     }
 }
 
