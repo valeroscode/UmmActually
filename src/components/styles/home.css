@@ -377,4 +377,43 @@
         overflow-x: scroll;
         right: unset;
     }
+
+    #filter-btns-container button {
+        margin: 0;
+        color: black;
+        background-color: whitesmoke;
+        width: fit-content;
+    }
+    #filter {
+        width: 90%;
+    }
+
+    #filter h2 {
+        font-size: 4rem;
+        width: 100%;
+        line-height: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #filter p {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+
+    #posts {
+        width: 90%;
+    }
+
+    .post-div {
+        width: 100%;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .post-div .post-info .post-title {
+        font-size: 1.7rem;
+    }
+    .post-div .post-info {
+        top: 1rem;
+    }
 }
