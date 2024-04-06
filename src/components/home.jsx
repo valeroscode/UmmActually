@@ -7,8 +7,6 @@ import {
   faEye, faCalendar
 } from "@fortawesome/free-solid-svg-icons";
 import Subscribe from './subscribe.jsx';
-import { set } from 'mongoose';
-import e from 'cors';
 
 function Home ({posts}) {
 
