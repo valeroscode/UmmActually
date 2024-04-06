@@ -196,7 +196,6 @@ margin: 0.5rem;
 
 @media screen and (max-width: 1410px) {
     #about-bottom-images img {
-        display: none;
         height: 10rem;
         object-fit: cover;
     }
@@ -232,4 +231,7 @@ margin: 0.5rem;
     #about-section {
         margin-top: 1rem;
     } 
+    #about-bottom-images img {
+        display: none;
+    }
 }
