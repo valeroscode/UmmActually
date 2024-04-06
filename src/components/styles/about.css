@@ -1,6 +1,7 @@
 #about-section {
     opacity: 0;
     position: relative;
+    width: 100%;
     margin-top: 12rem;
     -webkit-transition: all 0.3s ease;
 -moz-transition: all 0.3s ease;
