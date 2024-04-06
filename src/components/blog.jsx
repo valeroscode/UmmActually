@@ -207,7 +207,7 @@ function Blog() {
     { similarPosts.length !== 0 ?
     <section id='similar-posts'>
     <h3 className='roboto-regular sh3'>Similar Posts</h3>
-    <div id='posts'>
+    <div id='similar-blog-posts'>
     {
         similarPosts.map((post) =>
        

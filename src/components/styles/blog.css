@@ -204,7 +204,7 @@ border: 0px solid white;
     font-weight: 700;
 }
 
-#posts {
+#similar-blog-posts {
     position: relative;
     display: flex;
     justify-content: center;
@@ -241,6 +241,10 @@ border: 0px solid white;
 .blog-post-div .date-views {
     display: flex;
     justify-content: center;
+}
+
+.blog-post-div button {
+    width: 100%;
 }
 
 .blog-post-div .date-views p:first-child {
