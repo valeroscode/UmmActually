@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Subscribe from './subscribe.jsx';
 
-function Home ({posts}) {
+function Home () {
 
   setTimeout(() => {
   const children = document.getElementsByClassName('post-div');
@@ -18,8 +18,14 @@ function Home ({posts}) {
     }
   }, 500)
 
-  const [livePosts, setLivePosts] = useState(posts)
+  const [posts, setPosts] = useState([])
+  const [livePosts, setLivePosts] = useState([])
   const helloWorld = useRef();
+  const nuance = useRef();
+  const headline = useRef();
+  const thoughts = useRef();
+  const ideas = useRef();
+  const specs = useRef();
   const hello = ['Hello!', 'Hallo!', 'Hola!', 'مرحبًا!', 'Bonjour!', 'Ciao!', 'こんにちは!', 'سڵاو!', 'Hallå!']
 
   const homeSection = useRef()
@@ -29,6 +35,20 @@ function Home ({posts}) {
   
 
   useEffect(() => {
+
+      fetch('https://ummactuallyblog.onrender.com/api/Posts/GetAllPosts', {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        }).then(res => {
+          if (res.ok) return res.json()
+          return res.json().then(json => Promise.reject(json))
+        }).then(({data}) => {
+          setPosts(data)
+          setLivePosts(data)
+        }).catch(e => {
+          console.error(e.error)
+        })
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -55,7 +75,49 @@ function Home ({posts}) {
       })
     })
 
+    const nuanceOb = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        nuance.current.style.color = "#8969E5"
+      } else {
+        nuance.current.style.color = "black"
+      }
+    })
+    })
+
+    const headlineOb = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        headline.current.style.fontSize = "3rem"
+      } else {
+        headline.current.style.fontSize = "2.7rem"
+      }
+    })
+    })
+
+    function highlightword(word, delay) {
+      const highlight = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              word.style.color = "#F1DD73"
+            }, delay)
+          
+        } else {
+          word.style.color = "black"
+        }
+      })
+      })
+
+      highlight.observe(word)
+    }
+
     ob.observe(postsElement.current)
+    nuanceOb.observe(nuance.current)
+    headlineOb.observe(headline.current)
+    highlightword(thoughts.current, 500)
+    highlightword(ideas.current, 1000)
+    highlightword(specs.current, 1500)
   }, [])
 
 
@@ -69,6 +131,7 @@ function Home ({posts}) {
   }
 
   useEffect(() => { 
+
     const children = document.getElementsByClassName('post-div');
     let i = 0;
     function showPosts() {
@@ -84,7 +147,10 @@ function Home ({posts}) {
     }, 200)
       }
     }
-    showPosts()
+    if (livePosts.length !== 0) {
+      showPosts()
+    }
+    
   }, [livePosts])
 
   function searchPosts(e) {
@@ -104,21 +170,25 @@ function Home ({posts}) {
     }
   }
 
-  function updateViews(id, views) {
-    fetch('https://ummactuallyblog.onrender.com/blog/incviews', {
+  function updateViews(title, views) {
+    console.log(title)
+    console.log(views)
+    const calc = parseInt(views) + 1
+    const str = calc.toString()
+    fetch('https://ummactuallyblog.onrender.com/api/Posts/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            id: id,
-            views: parseInt(views) + 1
+            title: title,
+            views: str
           })
       }).then(res => {
         if (res.ok) return res.json()
         console.log(res)
         return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
+      }).then((data) => {
         console.log(data)
       }).catch(e => {
         console.error(e.error)
@@ -166,8 +236,8 @@ function Home ({posts}) {
             <p className='authName'>Adriana Valero</p>
             
         </div> */}
-        <h2>Let's get into the nuance.</h2>
-        <p className='about-the-blog roboto-regular'>Um…Actually is a student project created as an informal outlet for thoughts, ideas, and speculations about past and present International developments. With a focus on the political, economic, and social implications of domestic and world events, this blog aims to educate on topics not commonly presented in a practical (or honest) way.</p>
+        <h2 ref={headline}>Let's get into the <a ref={nuance} id='nuance'>nuance</a>.</h2>
+        <p className='about-the-blog roboto-regular'>Um, Actually... is a student project created as an informal outlet for <a ref={thoughts}>thoughts</a>, <a ref={ideas}>ideas</a>, and <a ref={specs}>speculations</a> about past and present International developments. With a focus on the political, economic, and social implications of domestic and world events, this blog aims to educate on topics not commonly presented in a practical (or honest) way.</p>
     </div>
     <div id='filter-btns-container' ref={fixedFilters}>
         <button onClick={(e) => handleFilteringPosts(e)} className='filter-btn'>All</button>
@@ -189,10 +259,11 @@ function Home ({posts}) {
     <div id='posts' ref={postsElement}>
     {
      livePosts.length === 0 ? posts.map((post) =>
-        <div className='post-div'>
+      <Link to={{pathname: '/posts', search: `?post=${post.title}` }} rel="noopener noreferrer"> 
+      <div className='post-div' onClick={() => updateViews(post.title, post.views)}>
            <div className='post-div-img-cat'>
-           <h5 className='category-preview roboto-bold'>{post.category}</h5>
             <img src={post.image} alt="" />
+            <h5 className='category-preview roboto-bold'>{post.category}</h5>
             </div>
             <div className='post-info'>
             <h3 className='post-title roboto-bold'>{post.title}</h3>
@@ -202,16 +273,18 @@ function Home ({posts}) {
             <p className='roboto-regular'><FontAwesomeIcon icon={faCalendar} /> {post.date}</p>
             <p className='roboto-regular'><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
             </div>
-            <Link to={{pathname: '/posts', search: `?post=${post._id}` }} target="_blank" rel="noopener noreferrer"><button className='read-more'
-            onClick={() => updateViews(post._id, post.views, post.category)}>Read More</button></Link>
             </div>
-        </div>
+            </div>
+            </Link>
+       
         ) : 
         livePosts.map((post) =>
-        <div className='post-div'>
+          <Link to={{pathname: '/posts', search: `?post=${post.title}` }} rel="noopener noreferrer">
+        <div className='post-div' onClick={() => updateViews(post.title, post.views)}>
             <div className='post-div-img-cat'>
-           <h5 className='category-preview roboto-bold'>{post.category}</h5>
+           
             <img src={post.image} alt="" />
+            <h5 className='category-preview roboto-bold'>{post.category}</h5>
             </div>
             <div className='post-info'>
             <h3 className='post-title'>{post.title}</h3>
@@ -221,10 +294,9 @@ function Home ({posts}) {
             <p><FontAwesomeIcon icon={faCalendar} /> {post.date}</p>
             <p><FontAwesomeIcon icon={faEye} /> {post.views} Views</p>
             </div>
-            <Link to={{pathname: '/posts', search: `?post=${post._id}` }} target="_blank" rel="noopener noreferrer"><button className='read-more'
-            onClick={() => updateViews(post._id, post.views, post.category)}>Read More</button></Link>
             </div>
         </div>
+        </Link>
         )
     }
     </div>

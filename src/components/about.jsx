@@ -58,18 +58,13 @@ function About() {
         </div>
         <div id='about-me-info'>
         <h1 className='playfair-display-text'>ABOUT ME</h1>
-        <p>The sun dipped low on the horizon, casting long shadows across the tranquil meadow. A gentle breeze rustled through the tall grass, carrying the sweet scent of wildflowers. In the distance, a lone figure could be seen, silhouetted against the fading light. Birds chirped softly as they settled in for the night, their melodic songs echoing through the air. As the evening descended, the world seemed to slow down, enveloped in a serene stillness that spoke of peace and contentment.</p>
+        <p>My name is Adriana Valero, I'm a Cuban-American scholar & masters candidate at King's College specializing in Global Affairs. My interest in politics & all things International reaches far back into my country of origin, the immigrant experience in America, and the many conversations we had at the dinner table about Cuban politics.</p>
         <br/>
-        <p>The sun dipped low on the horizon, casting long shadows across the tranquil meadow. A gentle breeze rustled through the tall grass, carrying the sweet scent of wildflowers. In the distance, a lone figure could be seen, silhouetted against the fading light. Birds chirped softly as they settled in for the night, their melodic songs echoing through the air. As the evening descended, the world seemed to slow down, enveloped in a serene stillness that spoke of peace and contentment.</p>
+        <p>Naturally, this interest extended to many other places in the world, with a specified interest in history, Levantine studies, and critical theory. My objective is to present topics not commonly talked about in a practical and honest way. This is also an outlet for ideas, opinions, and speculations.</p>
         </div>
     </div>
 
     <img id='about-me-banner' src={countries} alt="" />
-
-    <div id='about-middle'>
-    <h3 className='playfair-display-text'><a className='q1'>"</a>Nuance is the art of embracing complexity, finding beauty in the shades between black and white, and understanding that depth often lies in the spaces between the lines.<a className='q2'>"</a></h3>
-    <img src="working.jpg" alt="" />
-    </div>
 
     <div id='about-bottom'>
     <div id='about-bottom-images'>

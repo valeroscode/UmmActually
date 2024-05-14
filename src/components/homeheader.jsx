@@ -19,7 +19,7 @@ function Homeheader() {
     <>
     <div id='header'>
     <div id='logo-title'>
-    <h2 className='playfair-display-text'>Umm... Actually</h2>
+    <h2 className='playfair-display-text'>Um, Actually...</h2>
     </div>
 
     <nav>

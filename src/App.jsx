@@ -7,29 +7,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
 
-  const [posts, setPosts] = useState([])
-
-  useEffect(() => {
-    fetch('https://ummactuallyblog.onrender.com/blog', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      }).then(res => {
-        if (res.ok) return res.json()
-        return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
-        setPosts(data)
-      }).catch(e => {
-        console.error(e.error)
-      })
-  }, [])
-
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home posts={posts}/>}></Route>
-          <Route path="/home" element={<Home posts={posts}/>}></Route>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/home" element={<Home/>}></Route>
           <Route path="posts" element={<Blog/>}></Route>
           <Route path="about" element={<About/>}></Route>
         </Routes>

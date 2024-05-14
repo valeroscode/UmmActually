@@ -66,20 +66,41 @@
     text-align: start;
     margin-left: 6rem;
     margin-right: 6rem;
-    margin-bottom: 10rem;
+    margin-bottom: 20rem;
     margin-top: 10rem;
     
 }
 
 #about-blog h2 {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 3rem;
+    font-size: 2.7rem;
     font-weight: 200;
+    -webkit-transition: all 500ms ease-out;
+    -moz-transition: all 500ms ease-out;
+    -ms-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
+}
 
+#nuance {
+    -webkit-transition: all 500ms ease-out;
+    -moz-transition: all 500ms ease-out;
+    -ms-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
 }
 
 #about-blog p {
     font-size: 2rem;
+}
+
+#about-blog p a {
+    font-weight: 400;
+    -webkit-transition: all 500ms ease-out;
+    -moz-transition: all 500ms ease-out;
+    -ms-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
 }
 
 #filter {
@@ -109,7 +130,7 @@
     width: 15%;
     height: fit-content;
     z-index: 1000;
-    border-radius: 0;
+    border-radius: 7px;
     -webkit-transition: all 500ms ease-out;
     -moz-transition: all 500ms ease-out;
     -ms-transition: all 500ms ease-out;
@@ -132,13 +153,15 @@
 #filter-btns-container button {
     border-radius: 0;
     padding: 1rem;
+    background-color: whitesmoke;
     border: none;
+    color: black;
+    border-radius: 15px 0 0 15px;
     -webkit-transition: all 500ms ease-out;
     -moz-transition: all 500ms ease-out;
     -ms-transition: all 500ms ease-out;
     -o-transition: all 500ms ease-out;
     transition: all 500ms ease-out;
-    background-color: whitesmoke;
     font-weight: 700;
 }
 
@@ -154,7 +177,7 @@
     border: none;
     border-radius: 0;
     border-bottom: 2px solid gray;
-    width: 70%;
+    width: 80%;
     padding: 1rem 1rem 1rem 0;
 }
 
@@ -172,21 +195,27 @@
     margin: 0 6rem;
 }
 
+#posts a {
+    color: black;
+}
+
 .post-div {
     display: flex;
     opacity: 0;
     position: relative;
-    top: -2rem;
     justify-content: start;
-    align-items: center;
+    flex-direction: column;
     margin-right: 3rem;
-    margin-bottom: 4rem;
-    width: 40%;
+    margin-bottom: 6rem;
     -webkit-transition: all 200ms ease-out;
     -moz-transition: all 200ms ease-out;
     -ms-transition: all 200ms ease-out;
     -o-transition: all 200ms ease-out;
     transition: all 200ms ease-out;
+}
+
+.post-div:hover {
+  opacity: 1;
 }
 
 .post-div .post-info hr {
@@ -198,8 +227,7 @@
 .post-div .post-info {
     text-align: start;
     position: relative;
-    left: 1rem;
-    width: 100%;
+    width: 80%;
 }
 
 .post-div .post-div-img-cat {
@@ -210,13 +238,12 @@
 
 .post-div .post-div-img-cat .category-preview {
     position: relative;
-    top: 2.5rem;
     z-index: 10;
-    background-color: white;
     color: black;
     width: fit-content;
-    text-align: center;
-    padding: 0 0.5rem;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 1rem 0 0rem 0rem;
 }
 
 .post-div .post-info h3 {
@@ -228,16 +255,15 @@
 
 .post-div img {
     height: 20rem;
-    width: 12rem;
+    width: 80%;
     object-fit: cover;
-    border-radius: 15px;
     position: relative;
-    bottom: 1rem;
     z-index: 9;
+    border-radius: 7px;
 }
 
 
-.post-div .post-info p {
+.post-div .post-info p{
     margin-top: 0;
 }
 
@@ -262,13 +288,16 @@
 
 .post-div .post-info .post-title {
     width: fit-content;
+    font-size: 1.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
 }
 
 
 #new-content-parent {
-    background-image: url('/texture.jpg');
+    background-color: whitesmoke;
     background-size: cover;
-    width: 100%;
+    width: 120%;
     height: fit-content;
     margin-top: 15rem;
     margin-bottom: 5rem;
@@ -349,10 +378,6 @@
         width: 80%;
         margin-bottom: 0rem;
     }
-    .post-div img {
-        height: 15rem;
-        width: 15rem;
-    }
 }
 
 @media screen and (max-width: 678px) {
@@ -402,6 +427,10 @@
 
     #posts {
         width: 90%;
+    }
+
+    .post-quote {
+        max-width: 30%;
     }
 
     .post-div {

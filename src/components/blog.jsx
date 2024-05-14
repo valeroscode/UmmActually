@@ -6,6 +6,7 @@ import {
   faChevronLeft, faChevronRight, faEye, faCalendar
 } from "@fortawesome/free-solid-svg-icons";
 import Subscribe from './subscribe';
+import Homeheader from './homeheader';
 
 function Blog() {
 
@@ -15,9 +16,11 @@ function Blog() {
   const commenterName = useRef()
   const commentText = useRef()
   const postCategory = useRef()
+  const postText = useRef()
 
   const [post, setPost] = useState({
     title: "",
+    category: "",
     date: "",
     text: "",
     quote: "",
@@ -31,31 +34,33 @@ function Blog() {
     window.scroll({
       top: '0px',
     })
-    fetch(`https://ummactuallyblog.onrender.com/blog/article/${id}`, {
+    fetch(`https://ummactuallyblog.onrender.com/api/Posts/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
       }).then(res => {
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
+      }).then(({data}) => {
         setPost(data)
       }).catch(e => {
         console.error(e.error)
       })
 
-      fetch('https://ummactuallyblog.onrender.com/blog', {
+      fetch('https://ummactuallyblog.onrender.com/api/Posts/GetAllPosts', {
         headers: {
           'Content-Type': 'application/json'
         },
       }).then(res => {
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
+      }).then((data) => {
         setPosts(data)
       }).catch(e => {
         console.error(e.error)
       })
+
+      
 
    
 
@@ -77,25 +82,8 @@ function Blog() {
     setPostIndex(index)
   }
 
-  function handleLeavingComment(name, comment) {
-    if (name !== '' && comment !== '') {
-    let params = new URL(document.location).searchParams;
-    let id = params.get("post")
-    fetch(`https://ummactuallyblog.onrender.com/blog/newcomment`, {
-        method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            id: id,
-            name: name,
-            comment: comment
-          })
-        }).then(res => {
-          if (res.ok) return res.json()
-          return res.json().then(json => Promise.reject(json))
-        }).then(({ data }) => {
-            const userCommentDiv = new DocumentFragment();
+  function postComment(name, comment) {
+    const userCommentDiv = new DocumentFragment();
             const h4 = document.createElement('h4');
             const text = document.createElement('p')
             h4.textContent = name;
@@ -105,17 +93,40 @@ function Blog() {
             document.getElementById('reading-comments').appendChild(userCommentDiv)
             commenterName.current.value = '';
             commentText.current.value = '';
+  }
+
+  function handleLeavingComment(name, comment) {
+    let params = new URL(document.location).searchParams;
+    let title = params.get("post")
+    title = title.replaceAll("%20", " ")
+    console.log(title)
+    if (name !== '' && comment !== '') {
+    
+    fetch(`https://ummactuallyblog.onrender.com/api/Posts/newcomment`, {
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            title: title,
+            name: name,
+            comment: comment
+          })
+        }).then(async res => {
+          if (res.ok) return res.json()
+          const json = await res.json();
+          return await Promise.reject(json);
         }).catch(e => {
-          alert("something went wrong... the developer has been notified.")
           console.error(e.error)
         })
+        postComment(name, comment)
     } else {
         alert('Please fill out all the fields')
     }
   }
 
   function updateViews(id, views) {
-    fetch('https://ummactuallyblog.onrender.com/blog/incviews', {
+    fetch('https://ummactuallyblog.onrender.com/api/Posts/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -136,46 +147,41 @@ function Blog() {
 
   return (
     <>
-    <div id='blog-header'>
-        <div id='blog-header-nav'>
-        {
-            postIndex > 0 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex - 1]._id}` }}><button onClick={() => {
-              setTimeout(() => {
-              window.location.reload()
-            }, 100)
-            }}><FontAwesomeIcon icon={faChevronLeft} /> Prev Post</button></Link> : <button style={{opacity:0}}>Prev Post</button>
-        }
-        <h3 className='playfair-display-text'>Umm Actually...</h3>
-        {
-            postIndex < posts.length - 1 ? <Link to={{pathname: '/posts', search: `?post=${posts[postIndex + 1]._id}` }}><button onClick={() => {
-              setTimeout(() => {
-                window.location.reload()
-              }, 100)
-            }}>Next Post <FontAwesomeIcon icon={faChevronRight} /></button></Link> : <button style={{opacity:0}}>Next Post</button>
-        }
-        
-        </div>
-        <hr />
-    </div>
+    <Homeheader/>
     <section id='post-section'>
+    <div id='title-and-category'>
     <p ref={postCategory} id='post-category' className='roboto-regular'>{post.category}</p>
     <h1 className='playfair-display-text'>{post.title}</h1>
+    </div>
+    <div id='post-heading'>
+    <div id="post-heading-left">
+    
+    <img src={post.image} alt="" />
+    </div>
+    <div id="post-heading-right">
+    <div id='quote-in-post'>
+    <h2 className='playfair-display-text'>{post.quote}</h2>
     <div id='author-date'>
-    <p className='author roboto-regular'>BY ADRIANA</p>
-    <p className='roboto-regular'>/</p>
+    <p className='author roboto-regular'>By Adriana Valero</p>
     <p className='date roboto-regular'>{post.date}</p>
     </div>
-    <div id='quote-in-post'>
-    <h1 className='quote-h1'>"</h1>
-    <h2 className='playfair-display-text'>{post.quote}</h2>
     </div>
-    <img src={post.image} alt="" />
+    </div>
+    </div>
+    
     <div id='post-body'>
-    <p id='post-text' className='roboto-regular'>
-    {post.text}</p>
+      
+    <p id='post-text' dangerouslySetInnerHTML={
+      {
+        __html: post.text
+      }
+    } ref={postText} className='roboto-regular'>
+    </p>
+
     </div>
 
     <Subscribe/>
+
 
     <div id='comments-section'>
     <div id='reading-comments'>
@@ -187,7 +193,7 @@ function Blog() {
         post.comments.map((comment) => 
             <div>
                 <h4>{comment.name}</h4>
-                <p>{comment.comment}</p>
+                <p>{comment.commentText}</p>
             </div>
         )
     }
@@ -202,6 +208,8 @@ function Blog() {
     </div>
     </div>
     </div>
+
+   
     </section>
 
     { similarPosts.length !== 0 ?
@@ -240,9 +248,6 @@ function Blog() {
     <section id='footer'>
     <a id='contact-btn' href='mailto:AdrianaDValero@gmail.com'>Contact</a>
     <p>{post.views} Views</p>
-    <img src="" alt="" />
-    <h5>Adriana Valero</h5>
-    <p>Undergraduate Student at FIU</p>
     <div id='home-footer'>
         <h2>Um...</h2>
         <p>Thanks for visiting!</p>

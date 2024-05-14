@@ -35,9 +35,10 @@ border: 0px solid white;
 #post-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     margin-bottom: 5rem;
+    margin-top: 15rem;
 }
 
 #post-section img {
@@ -45,13 +46,19 @@ border: 0px solid white;
     width: 100%;
     object-fit: cover;
     margin-bottom: 5rem;
+    border-radius: 7px;
+}
+
+#title-and-category {
+    margin: 0 7rem;
 }
 
 #quote-in-post {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
+    justify-content: flex-start;
+    align-items: start;
+    width: 100%;
+    flex-direction: column;
     color: black;
 }
 
@@ -60,12 +67,15 @@ border: 0px solid white;
 }
 
 #quote-in-post h2 {
-    font-size: 2rem;
-
+    font-size: 1.5rem;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 2rem;
+    font-weight: 200;
+    width: 60%;
 }
 
 #post-category {
-    border: 1px solid black;
     border-radius: 15px;
     padding: 0;
     width: fit-content;
@@ -78,6 +88,24 @@ border: 0px solid white;
     margin-top: 1rem;
     margin-bottom: 1rem;
     color: black;
+    text-align: left;
+}
+
+#post-heading {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 7rem;
+    height: fit-content;
+}
+
+#post-heading-right {
+    display: flex;
+    flex-direction: column;
+}
+
+#post-heading-left {
+    width: fit-content;
+    height: fit-content;
 }
 
 .quote-h1 {
@@ -87,13 +115,19 @@ border: 0px solid white;
 
 #author-date {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 2rem;
+    width: 100%;
 }
 .author {
     margin-right: 1rem;
+    margin-bottom: 0;
 }
 .date {
-    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0;
 }
 
 #post-body {
@@ -106,7 +140,7 @@ border: 0px solid white;
 #post-body p {
     position: relative;
     text-align: left;
-    margin: 0 7rem 0 7rem;
+    margin: 0 40% 0 7rem;
 }
 
 .first-letter {
@@ -140,15 +174,23 @@ border: 0px solid white;
 #comments-section {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     position: relative;
     top: 9rem;
-    width: 50vw;
+    width: 100%;
+    margin-left: 7rem;
 }
 
 #comments-section h2 {
     margin-bottom: 0;
+    font-size: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+}
+
+#home-footer h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #comments-section div {
@@ -166,12 +208,14 @@ border: 0px solid white;
    position: relative;
    top: 3rem;
    width: 100%;
+   display: flex;
+   justify-content: center;
 }
 
 #leave-comment-section div {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70%;
 }
 
 #leave-comment-section div input {
@@ -283,6 +327,19 @@ border: 0px solid white;
     #about-middle h3 a {
         display: none;
     }
+    #post-section img {
+        width: 20rem;
+    }
+    #quote-in-post h2 {
+        width: 80%;
+    }
+    
+}
+
+@media screen and (max-width: 1160px) {
+    #post-body p {
+        margin: 0 7rem 0 7rem;
+    }
 }
 
 @media screen and (max-width: 873px) {
@@ -293,22 +350,32 @@ border: 0px solid white;
     #about-middle h3 {
         width: 90%;
      }
+     #quote-in-post h2 {
+        width: 120%;
+    }
 }
 
 @media screen and (max-width: 983px) {
     #quote-in-post {
         width: 80%;
     }
+    
 }
 
 @media screen and (max-width: 705px) {
     #post-body p {
     margin: 0 3rem 0 3rem;
     }
+    #comments-section {
+        margin-left: 3rem;
+    }
+    #post-section img {
+        height: 30rem;
+    }
 }
 
-@media screen and (max-width: 641px) {
-    #comments-section {
-        width: 80%;
+@media screen and (max-width: 500px) {
+    #post-section img {
+        height: 30rem;
     }
 }
