@@ -27,8 +27,6 @@ namespace MyWebApi
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddSingleton<IMongoDatabase>(provider =>
         {
             var settings = MongoClientSettings.FromConnectionString(_connectionUri.ToString());

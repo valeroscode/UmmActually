@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "E0+TlLu/F7gdrG4Fwl4yn1AW95XK5pu5sHJXY5gGs7s=",
+  "Source": "API",
+  "BasePath": "_content/API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "API\\wwwroot",
+      "Source": "API",
+      "ContentRoot": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\",
+      "BasePath": "_content/API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

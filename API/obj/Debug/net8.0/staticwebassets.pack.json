@@ -1,0 +1,109 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\Um.png",
+      "PackagePath": "staticwebassets\\Um.png"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\colored-QqhuikYp.jpg",
+      "PackagePath": "staticwebassets\\assets\\colored-QqhuikYp.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\countries--JJfl5b-.jpg",
+      "PackagePath": "staticwebassets\\assets\\countries--JJfl5b-.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\index-Byvp09-p.js",
+      "PackagePath": "staticwebassets\\assets\\index-Byvp09-p.js"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\index-D7rBLbb1.css",
+      "PackagePath": "staticwebassets\\assets\\index-D7rBLbb1.css"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\austria.jpg",
+      "PackagePath": "staticwebassets\\austria.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\author.jpg",
+      "PackagePath": "staticwebassets\\author.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\church.jpg",
+      "PackagePath": "staticwebassets\\church.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\compass.jpg",
+      "PackagePath": "staticwebassets\\compass.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\desert.jpg",
+      "PackagePath": "staticwebassets\\desert.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\europe.jpg",
+      "PackagePath": "staticwebassets\\europe.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\flower.png",
+      "PackagePath": "staticwebassets\\flower.png"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\germany.jpg",
+      "PackagePath": "staticwebassets\\germany.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\glasses.jpg",
+      "PackagePath": "staticwebassets\\glasses.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\syria.jpg",
+      "PackagePath": "staticwebassets\\syria.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\texture.jpg",
+      "PackagePath": "staticwebassets\\texture.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\time.jpg",
+      "PackagePath": "staticwebassets\\time.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\usa.jpg",
+      "PackagePath": "staticwebassets\\usa.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\vite.svg",
+      "PackagePath": "staticwebassets\\vite.svg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\woman.jpg",
+      "PackagePath": "staticwebassets\\woman.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\working.jpg",
+      "PackagePath": "staticwebassets\\working.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.API.props",
+      "PackagePath": "build\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.API.props",
+      "PackagePath": "buildMultiTargeting\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.API.props",
+      "PackagePath": "buildTransitive\\API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

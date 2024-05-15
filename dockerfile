@@ -1,23 +1,23 @@
-# Use the official Node.js image as a base
-FROM node:18.15.0
-
-# Set the working directory in the container
+# Stage 1: Build the React frontend
+FROM node:alpine AS frontend-builder
 WORKDIR /app
-
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install dependencies
+COPY package.json package-lock.json ./
 RUN npm install
-
-# Copy the entire project to the working directory
-COPY . .
-
-# Build the React app for production
+COPY . ./
 RUN npm run build
 
-# Expose the port on which your React app will run
-EXPOSE 3000
+# Stage 2: Build and run the .NET backend
+FROM mcr.microsoft.com/dotnet/sdk:8.0.204 AS backend-builder
+WORKDIR /app
+COPY API/*.csproj ./API/
+RUN dotnet restore API/*.csproj
+COPY API/ ./API/
+RUN dotnet publish -c Release -o out
 
-# Command to run the React app
-CMD ["npm", "start"]
+# Stage 3: Combine frontend and backend
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.204
+WORKDIR /app
+COPY --from=frontend-builder /app/build ./wwwroot
+COPY --from=backend-builder /app/out .
+ENV ASPNETCORE_URLS=http://+:10000
+ENTRYPOINT ["dotnet", "API/bin/API.dll"]
