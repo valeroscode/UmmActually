@@ -12,6 +12,7 @@ WORKDIR /app
 COPY API/*.csproj ./API/
 RUN dotnet restore API/*.csproj
 COPY API/ ./API/
+WORKDIR /app/API
 RUN dotnet publish -c Release -o out
 
 # Stage 3: Combine frontend and backend
