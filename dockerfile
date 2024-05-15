@@ -9,11 +9,9 @@ RUN npm run build
 # Stage 2: Build and run the .NET backend
 FROM mcr.microsoft.com/dotnet/sdk:8.0.204 AS backend-builder
 WORKDIR /app
-# Copy the .csproj file and restore dependencies
-COPY *.csproj ./
-RUN dotnet restore
-# Copy the entire project and build
-COPY . ./
+COPY API/*.csproj ./API/
+RUN dotnet restore API/*.csproj
+COPY API/ ./API/
 RUN dotnet publish -c Release -o out
 
 # Stage 3: Combine frontend and backend
