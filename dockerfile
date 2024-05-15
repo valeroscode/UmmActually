@@ -18,6 +18,6 @@ RUN dotnet publish -c Release -o out
 # Stage 3: Combine frontend and backend
 FROM mcr.microsoft.com/dotnet/aspnet:8.0.4
 WORKDIR /app
-COPY --from=backend-builder /app/out .
+COPY --from=backend-builder /app/API/out .
 ENV ASPNETCORE_URLS=http://+:10000
 ENTRYPOINT ["dotnet", "API/bin/API.dll"]
