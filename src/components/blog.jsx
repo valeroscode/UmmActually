@@ -19,6 +19,7 @@ function Blog() {
   const postText = useRef()
 
   const [post, setPost] = useState({
+    id: "",
     title: "",
     category: "",
     date: "",
@@ -28,26 +29,28 @@ function Blog() {
   })
 
   let params = new URL(document.location).searchParams;
-  let id = params.get("post")
+  let id = localStorage.getItem('post')
 
   useEffect(() => {
+    console.log(id)
     window.scroll({
       top: '0px',
     })
-    fetch(`https://ummactuallyblog.onrender.com/api/Posts/${id}`, {
+    fetch(`https://umactuallyblog.azurewebsites.net/api/Posts/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
       }).then(res => {
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
-      }).then(({data}) => {
+      }).then((data) => {
+        console.log(data)
         setPost(data)
       }).catch(e => {
         console.error(e.error)
       })
 
-      fetch('https://ummactuallyblog.onrender.com/api/Posts/GetAllPosts', {
+      fetch('https://umactuallyblog.azurewebsites.net/api/Posts/GetAllPosts', {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -102,7 +105,7 @@ function Blog() {
     console.log(title)
     if (name !== '' && comment !== '') {
     
-    fetch(`https://ummactuallyblog.onrender.com/api/Posts/newcomment`, {
+    fetch(`https://umactuallyblog.azurewebsites.net/api/Posts/newcomment`, {
         method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -126,7 +129,7 @@ function Blog() {
   }
 
   function updateViews(id, views) {
-    fetch('https://ummactuallyblog.onrender.com/api/Posts/incviews', {
+    fetch('https://umactuallyblog.azurewebsites.net/api/Posts/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -138,8 +141,6 @@ function Blog() {
       }).then(res => {
         if (res.ok) return res.json()
         return res.json().then(json => Promise.reject(json))
-      }).then(({ data }) => {
-    
       }).catch(e => {
         console.error(e.error)
       })

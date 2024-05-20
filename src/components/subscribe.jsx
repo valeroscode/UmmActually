@@ -5,7 +5,7 @@ function Subscribe () {
   const emailInput = useRef();
   function handleSubscribing(e, email) {
 
-    fetch(`https://ummactuallyblog.onrender.com/api/Posts/sub`, {
+    fetch(`https://umactuallyblog.azurewebsites.net/api/Posts/sub`, {
       method: 'POST',
         headers: {
           'Content-Type': 'application/json'

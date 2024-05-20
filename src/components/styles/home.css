@@ -3,6 +3,7 @@
     margin-top: 7rem;
     opacity: 0;
     top: -4rem;
+    width: 100%;
     -webkit-transition: all 400ms ease;
     -moz-transition: all 400ms ease;
     -ms-transition: all 400ms ease;
@@ -389,6 +390,9 @@
 }
 
 @media screen and (max-width: 610px) {
+    #new-content-parent {
+        width: unset;
+    }
     #new-contnet {
         left: unset;
     }
@@ -428,14 +432,10 @@
         width: 90%;
     }
 
-    .post-quote {
-        max-width: 30%;
-    }
-
     .post-div {
         width: 100%;
         justify-content: start;
-        align-items: center;
+        align-items: start;
     }
 
     .post-div .post-info .post-title {

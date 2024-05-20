@@ -1,23 +1,24 @@
-# Stage 1: Build the React frontend
-FROM node:alpine AS frontend-builder
-WORKDIR /app
-COPY package.json package-lock.json ./
+# Build the react frontend
+
+FROM node:18.15.0 AS frontend
+WORKDIR /app/dist
+COPY package*.json ./
 RUN npm install
-COPY . ./
 RUN npm run build
+COPY ./dist /app/dist/
 
-# Stage 2: Build and run the .NET backend
-FROM mcr.microsoft.com/dotnet/sdk:8.0.204 AS backend-builder
-WORKDIR /app
-COPY API/*.csproj ./API/
-RUN dotnet restore API/*.csproj
-COPY API/ ./API/
-WORKDIR /app/API
-RUN dotnet publish -c Release -o out
 
-# Stage 3: Combine frontend and backend
-FROM mcr.microsoft.com/dotnet/aspnet:8.0.4
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS backend
+WORKDIR /app/api
+COPY ./API /app/api/
+RUN dotnet restore
+RUN dotnet build -c Release
+
+# Stage 3: Combine the frontend and backend
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8.1 AS final
 WORKDIR /app
-COPY --from=backend-builder /app/API/out .
-ENV ASPNETCORE_URLS=http://+:10000
-ENTRYPOINT ["dotnet", "API/bin/API.dll"]
+COPY --from=frontend /app/dist /app/dist
+COPY --from=backend /app/api /app/api
+EXPOSE 10000
+CMD ["dotnet", "run"]
+

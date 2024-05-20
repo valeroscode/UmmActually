@@ -20,8 +20,8 @@ namespace MyWebApi
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
-            string connectionString = _configuration["MONGO_CONNECT"];
-            _connectionUri = new Uri(connectionString);
+            // string connectionString = _configuration["MONGO_CONNECT"];
+            // _connectionUri = new Uri(connectionString);
         }
 
         public IConfiguration Configuration { get; }
@@ -29,7 +29,7 @@ namespace MyWebApi
         {
             services.AddSingleton<IMongoDatabase>(provider =>
         {
-            var settings = MongoClientSettings.FromConnectionString(_connectionUri.ToString());
+            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://avalerosoftware:EnSuXjucfRfCcvEN@cluster0.pgjzzcc.mongodb.net/umacc?retryWrites=true&w=majority");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
             try
@@ -55,8 +55,8 @@ namespace MyWebApi
                 new StaticFileOptions
                 {
                     FileProvider = new PhysicalFileProvider(
-                        Path.Combine(env.ContentRootPath, "..", "dist")
-                    ),
+            Path.Combine(env.ContentRootPath, "wwwroot")
+        ),
                     ServeUnknownFileTypes = true
                 }
             );
@@ -67,7 +67,7 @@ namespace MyWebApi
 
     if (context.Response.StatusCode == 404 && !context.Request.Path.Value.StartsWith("/api"))
     {
-        var filePath = Path.Combine(env.ContentRootPath, "..", "dist", "index.html");
+        var filePath = Path.Combine(env.ContentRootPath, "wwwroot", "index.html");
         await context.Response.SendFileAsync(filePath);
     }
 });
@@ -80,7 +80,7 @@ namespace MyWebApi
               {
                   endpoints.MapGet("/", async context =>
                      {
-                         var filePath = Path.Combine(env.ContentRootPath, "..", "dist", "index.html");
+                         var filePath = Path.Combine(env.ContentRootPath, "wwwroot", "index.html");
                          await context.Response.SendFileAsync(filePath);
                      });
 

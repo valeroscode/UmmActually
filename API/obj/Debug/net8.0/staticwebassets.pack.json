@@ -1,91 +1,95 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\Um.png",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\Um.png",
       "PackagePath": "staticwebassets\\Um.png"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\colored-QqhuikYp.jpg",
-      "PackagePath": "staticwebassets\\assets\\colored-QqhuikYp.jpg"
-    },
-    {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\countries--JJfl5b-.jpg",
-      "PackagePath": "staticwebassets\\assets\\countries--JJfl5b-.jpg"
-    },
-    {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\index-Byvp09-p.js",
-      "PackagePath": "staticwebassets\\assets\\index-Byvp09-p.js"
-    },
-    {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\assets\\index-D7rBLbb1.css",
-      "PackagePath": "staticwebassets\\assets\\index-D7rBLbb1.css"
-    },
-    {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\austria.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\austria.jpg",
       "PackagePath": "staticwebassets\\austria.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\author.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\author.jpg",
       "PackagePath": "staticwebassets\\author.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\church.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\church.jpg",
       "PackagePath": "staticwebassets\\church.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\compass.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\colored.QqhuikYp.jpg",
+      "PackagePath": "staticwebassets\\colored.QqhuikYp.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\coloredsky.jpg",
+      "PackagePath": "staticwebassets\\coloredsky.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\compass.jpg",
       "PackagePath": "staticwebassets\\compass.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\desert.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\countries.-JJfl5b-.jpg",
+      "PackagePath": "staticwebassets\\countries.-JJfl5b-.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\desert.jpg",
       "PackagePath": "staticwebassets\\desert.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\europe.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\europe.jpg",
       "PackagePath": "staticwebassets\\europe.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\flower.png",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\flower.png",
       "PackagePath": "staticwebassets\\flower.png"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\germany.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\germany.jpg",
       "PackagePath": "staticwebassets\\germany.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\glasses.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\glasses.jpg",
       "PackagePath": "staticwebassets\\glasses.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\index.html",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\index.CeS1Mc_u.css",
+      "PackagePath": "staticwebassets\\index.CeS1Mc_u.css"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\syria.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\muslimwomen.jpg",
+      "PackagePath": "staticwebassets\\muslimwomen.jpg"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\script.rruSRIjw.js",
+      "PackagePath": "staticwebassets\\script.rruSRIjw.js"
+    },
+    {
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\syria.jpg",
       "PackagePath": "staticwebassets\\syria.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\texture.jpg",
-      "PackagePath": "staticwebassets\\texture.jpg"
-    },
-    {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\time.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\time.jpg",
       "PackagePath": "staticwebassets\\time.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\usa.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\usa.jpg",
       "PackagePath": "staticwebassets\\usa.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\vite.svg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\vite.svg",
       "PackagePath": "staticwebassets\\vite.svg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\woman.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\woman.jpg",
       "PackagePath": "staticwebassets\\woman.jpg"
     },
     {
-      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\API\\wwwroot\\working.jpg",
+      "Id": "C:\\Users\\avale\\Dev\\umm-actually\\api\\wwwroot\\working.jpg",
       "PackagePath": "staticwebassets\\working.jpg"
     },
     {

@@ -36,14 +36,14 @@ function Home () {
 
   useEffect(() => {
 
-      fetch('https://ummactuallyblog.onrender.com/api/Posts/GetAllPosts', {
+      fetch('https://umactuallyblog.azurewebsites.net/api/Posts/GetAllPosts', {
           headers: {
             'Content-Type': 'application/json'
           },
         }).then(res => {
           if (res.ok) return res.json()
           return res.json().then(json => Promise.reject(json))
-        }).then(({data}) => {
+        }).then((data) => {
           setPosts(data)
           setLivePosts(data)
         }).catch(e => {
@@ -171,11 +171,10 @@ function Home () {
   }
 
   function updateViews(title, views) {
-    console.log(title)
-    console.log(views)
+    localStorage.setItem('post', title)
     const calc = parseInt(views) + 1
     const str = calc.toString()
-    fetch('https://ummactuallyblog.onrender.com/api/Posts/incviews', {
+    fetch('https://umactuallyblog.azurewebsites.net/api/Posts/incviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -189,7 +188,6 @@ function Home () {
         console.log(res)
         return res.json().then(json => Promise.reject(json))
       }).then((data) => {
-        console.log(data)
       }).catch(e => {
         console.error(e.error)
       })
